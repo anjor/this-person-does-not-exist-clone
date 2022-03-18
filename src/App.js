@@ -23,6 +23,12 @@ function App() {
     </div>
     <button onClick={() => setIdx((idx + 1) % images.length)}>Refresh Image</button>
     <br></br>
+    <div>
+      Identify, and tag the picture as male, female or child.
+    </div>
+    <button>Male</button>
+    <button>Female</button>
+    <button>Child</button>
     <Images images = {images} idx = { idx } />
     </>
   );
