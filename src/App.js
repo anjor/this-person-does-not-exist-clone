@@ -21,8 +21,9 @@ function App() {
     <div>
       This is a clone of <a href="https://this-person-does-not-exist.com/en">This person does not exist.</a> Except, instead of generating the faces dynamically, the faces are in fact stored on filecoin using <a href="https://estuary.tech/">estuary</a>.
     </div>
-    <Images images = {images} idx = { idx } />
     <button onClick={() => setIdx((idx + 1) % images.length)}>Refresh Image</button>
+    <br></br>
+    <Images images = {images} idx = { idx } />
     </>
   );
 }
