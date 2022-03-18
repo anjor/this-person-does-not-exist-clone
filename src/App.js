@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Images from './Images';
+
+
 
 function App() {
+  const [images, setImages] = React.useState([])
+  const [idx, setIdx] = React.useState(0)
+
+  function fetchData() {
+
+      fetch("https://anjor-simple-flask-server.herokuapp.com/data/list")
+      .then(response => response.json())
+      .then(data => setImages(data))
+  }
+  
+  React.useEffect(fetchData, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <div>
+      This is a clone of <a href="https://this-person-does-not-exist.com/en">This person does not exist.</a> Except, instead of generating the faces dynamically, the faces are in fact stored on filecoin using <a href="https://estuary.tech/">estuary</a>.
     </div>
+    <Images images = {images} idx = { idx } />
+    <button onClick={() => setIdx((idx + 1) % images.length)}>Refresh Image</button>
+    </>
   );
 }
 
